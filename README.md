@@ -15,7 +15,7 @@ built = "^0.3"
 pyo3-built = "^0.1"
 ```
 
-Create your `build.rs` as you would normally with `built`, but activate
+Create your `build.rs` as you normally would with `built`, but activate
 dependencies metadata as well:
 ```rust
 //! build.rs
