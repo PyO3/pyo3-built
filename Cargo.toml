@@ -1,0 +1,20 @@
+[package]
+name = "pyo3-built"
+version = "0.1.0"
+description = "Expose build variables obtained with built as a PyDict"
+authors = ["PyO3 Project and Contributors"]
+readme = "README.md"
+keywords = ["pyo3", "python", "cpython", "built"]
+homepage = "https://github.com/pyo3/pyo3-built"
+repository = "https://github.com/pyo3/pyo3-built.git"
+license = "Apache-2.0"
+categories = ["development-tools::ffi", "development-tools::build-utils"]
+
+[badges]
+travis-ci = { repository = "PyO3/pyo3-built", branch = "master" }
+appveyor = { repository = "PyO3/pyo3-built" }
+codecov = { repository = "PyO3/pyo3-built", branch = "master", service = "github" }
+
+[dependencies]
+pyo3 = "^0.2.6"
+built = "^0.3"
