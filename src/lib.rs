@@ -5,7 +5,8 @@ pub extern crate built;
 macro_rules! pyo3_built {
     ($py: ident, $info: ident) => {{
 
-        use $crate::pyo3::prelude::PyDict;
+        use $crate::pyo3::types::PyDict;
+        use $crate::pyo3::types::PyString;
         use $crate::built::util::strptime;
 
         let info = PyDict::new($py);
@@ -33,7 +34,7 @@ macro_rules! pyo3_built {
         for (name, version) in $info::DEPENDENCIES.iter() {
             deps.set_item(name, version)?;
         }
-        info.set_item("dependencies", deps);
+        info.set_item("dependencies", deps)?;
 
         // Features
         let features = $info::FEATURES

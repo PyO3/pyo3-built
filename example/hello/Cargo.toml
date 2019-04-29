@@ -5,11 +5,11 @@ authors = ["Martin Larralde <martin.larralde@ens-cachan.fr>"]
 build = "build.rs"
 
 [dependencies]
-pyo3 = "^0.2.6"
+pyo3 = "*"
 pyo3-built = { path = "../.." }
 
 [build-dependencies]
-built = "^0.3.0"
+built = "*"
 
 [lib]
 crate-type = ["cdylib"]

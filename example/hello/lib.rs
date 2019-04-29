@@ -1,18 +1,16 @@
-#![feature(proc_macro)]
-
 #[macro_use]
 extern crate pyo3_built;
 extern crate pyo3;
 
 use pyo3::prelude::*;
-use pyo3::py::modinit;
 
+#[allow(dead_code)]
 mod build {
     include!(concat!(env!("OUT_DIR"), "/built.rs"));
 }
 
 /// Module documentation string
-#[modinit("hello")]
+#[pymodule(hello)]
 fn init(py: Python, m: &PyModule) -> PyResult<()> {
 
     #[pyfn(m, "hello")]
