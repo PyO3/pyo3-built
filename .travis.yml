@@ -9,9 +9,9 @@ cache:
 
 matrix:
   include:
-  - python: "3.5"
-  - python: "3.6"
-  - python: "3.7"
+  - python: 3.5
+  - python: 3.6
+  - python: 3.7
 
 env:
   global:
@@ -31,16 +31,12 @@ install:
 script:
   - ./ci/travis/test.sh
 
-# deploy:
-#   - provider: script
-#     skip_cleanup: true
-#     script: ./ci/travis/cover.sh
-#     on:
-#       branch: master
-#   - provider: script
-#     skip_cleanup: true
-#     script: ./ci/travis/guide.sh
-#     on:
-#       branch: master
-#       repo: PyO3/pyo3
-#       python: 3.6
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: ./ci/travis/cover.sh
+  on:
+    branch: master
+    repo: PyO3/pyo3-built
+    python: 3.7
+    tags: true
