@@ -6,7 +6,6 @@ cache:
   pip: true
   directories:
   - "$HOME/.cargo"
-  - "$HOME/kcov"
 
 matrix:
   include:
@@ -21,6 +20,7 @@ env:
     - RUST_BACKTRACE=1
     - SCCACHE_DIR="$HOME/.cargo/sccache"
     - RUSTC_WRAPPER=sccache
+    - PATH="$HOME/.cargo/bin:$PATH"
 
 before_install:
   - ./ci/travis/setup.sh
