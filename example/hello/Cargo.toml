@@ -3,6 +3,7 @@ name = 'hello'
 version = "0.1.0"
 authors = ["Martin Larralde <martin.larralde@ens-cachan.fr>"]
 build = "build.rs"
+publish = false
 
 [dependencies]
 pyo3 = "*"

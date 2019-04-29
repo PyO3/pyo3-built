@@ -34,7 +34,7 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ./ci/travis/cover.sh
+  script: cargo publish --token $CRATES_IO_TOKEN
   on:
     branch: master
     repo: PyO3/pyo3-built
