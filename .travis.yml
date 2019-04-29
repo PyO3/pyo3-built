@@ -1,5 +1,5 @@
-sudo: required
-dist: trusty
+sudo: false
+dist: xenial
 language: python
 
 cache:
@@ -10,17 +10,9 @@ cache:
 
 matrix:
   include:
-  - python: "2.7"
-    env: FEATURES=python2
   - python: "3.5"
-    env: FEATURES=python3
   - python: "3.6"
-    env: FEATURES=python3
-  - python: "3.7-dev"
-    env: FEATURES=python3
-  allow_failures:
-  - python: "3.7-dev"
-    env: FEATURES=python3
+  - python: "3.7"
 
 env:
   global:
@@ -30,37 +22,25 @@ env:
     - SCCACHE_DIR="$HOME/.cargo/sccache"
     - RUSTC_WRAPPER=sccache
 
-addons:
-  apt:
-    packages:
-      - libcurl4-openssl-dev
-      - libelf-dev
-      - libdw-dev
-      - cmake
-      - gcc
-      - binutils-dev
-      - libiberty-dev
-
 before_install:
-  - source ./ci/travis/setup.sh
+  - ./ci/travis/setup.sh
 
 install:
-  - pip install setuptools-rust pytest pytest-benchmark
+  - pip install setuptools-rust
 
 script:
-  - source ./ci/travis/test.sh
+  - ./ci/travis/test.sh
 
-deploy:
-  - provider: script
-    skip_cleanup: true
-    script: ./ci/travis/cover.sh
-    on:
-      branch: master
-  - provider: script
-    skip_cleanup: true
-    script: ./ci/travis/guide.sh
-    on:
-      branch: master
-      repo: PyO3/pyo3
-      python: 3.6
-    
+# deploy:
+#   - provider: script
+#     skip_cleanup: true
+#     script: ./ci/travis/cover.sh
+#     on:
+#       branch: master
+#   - provider: script
+#     skip_cleanup: true
+#     script: ./ci/travis/guide.sh
+#     on:
+#       branch: master
+#       repo: PyO3/pyo3
+#       python: 3.6
