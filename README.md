@@ -3,6 +3,11 @@
 *Simple macro to expose metadata obtained with the [`built`](https://crates.io/crates/built)
 crate as a [`PyDict`](https://pyo3.github.io/pyo3/pyo3/struct.PyDict.html)*
 
+[![TravisCI](https://img.shields.io/travis/PyO3/pyo3-built/master.svg?maxAge=600&style=flat-square)](https://travis-ci.org/PyO3/pyo3-built/branches)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat-square&maxAge=2678400)](https://choosealicense.com/licenses/apache-2.0/)
+[![Source](https://img.shields.io/badge/source-GitHub-303030.svg?maxAge=2678400&style=flat-square)](https://github.com/PyO3/pyo3-built)
+[![Crate](https://img.shields.io/crates/v/pyo3-built.svg?maxAge=600&style=flat-square)](https://crates.io/crates/pyo3-built)
+[![GitHub issues](https://img.shields.io/github/issues/PyO3/pyo3-built.svg?style=flat-square)](https://github.com/PyO3/pyo3-built/issues)
 
 ## Usage
 
@@ -10,7 +15,6 @@ Add the following to your `Cargo.toml` manifest:
 ```toml
 [build-dependencies]
 built = "^0.3"
-
 [dependencies]
 pyo3-built = "^0.1"
 ```
@@ -34,17 +38,14 @@ fn main() {
 ```
 
 Then, include the generated file anywhere in a dedicated module in your Python
-extension:
+extension, and use the `pyo3_built!` macro to generate the `PyDict`:
 ```rust
 //! lib.rs
-#![feature(proc_macro)]
-
 #[macro_use]
 extern crate pyo3_built;
 extern crate pyo3;
 
 use pyo3::prelude::*;
-use pyo3::py::modinit;
 
 #[allow(dead_code)]
 mod build {
@@ -70,9 +71,9 @@ will contain the following metadata:
    "debug": true,
    "dependencies": {
       ...
-      "pyo3": "0.2.6",
+      "pyo3": "0.6.0",
       "pyo3-built": "0.1.0",
-      "pyo3cls": "0.2.1",
+      "pyo3cls": "0.6.0",
       ...
    },
    "features": [
