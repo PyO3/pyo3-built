@@ -21,12 +21,12 @@ macro_rules! pyo3_built {
         info.set_item("build", build)?;
 
         // info time
-        let ts = strptime($info::BUILT_TIME_UTC).to_timespec();
+        let ts = strptime($info::BUILT_TIME_UTC).timestamp();
         let dt = $py
             .import("datetime")?
             .get("datetime")?
-            .into_object($py)
-            .call_method1($py, "fromtimestamp", (ts.sec,))?;
+            .to_object($py)
+            .call_method1($py, "fromtimestamp", (ts,))?;
         info.set_item("info-time", dt)?;
 
         // info dependencies
