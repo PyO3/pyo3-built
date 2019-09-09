@@ -1,6 +1,6 @@
 [package]
 name = "pyo3-built"
-version = "0.2.0"
+version = "0.3.0"
 description = "Expose build variables obtained with built as a PyDict"
 authors = ["PyO3 Project and Contributors"]
 readme = "README.md"
