@@ -5,8 +5,8 @@ pub extern crate built;
 macro_rules! pyo3_built {
     ($py: ident, $info: ident) => {{
 
-        use $crate::pyo3::types::PyDict;
-        use $crate::pyo3::types::PyString;
+        use ::pyo3::types::PyDict;
+        use ::pyo3::types::PyString;
         use $crate::built::util::strptime;
 
         let info = PyDict::new($py);
