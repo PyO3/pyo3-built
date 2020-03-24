@@ -14,9 +14,9 @@ crate as a [`PyDict`](https://pyo3.github.io/pyo3/pyo3/struct.PyDict.html)*
 Add the following to your `Cargo.toml` manifest:
 ```toml
 [build-dependencies]
-built = "^0.3"
+built = { version = "0.4", features = ["chrono"] }
 [dependencies]
-pyo3-built = "^0.1"
+pyo3-built = "0.4"
 ```
 
 Create your `build.rs` as you normally would with `built`, but activate
@@ -32,7 +32,7 @@ fn main() {
     opts.set_dependencies(true)
         .set_compiler(true)
         .set_env(true);
-    built::write_built_file_with_opts(&opts, src, dst)
+    built::write_built_file_with_opts(&opts, std::path::Path::new(&src), &dst)
         .expect("Failed to acquire build-time information");
 }
 ```
