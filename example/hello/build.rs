@@ -13,6 +13,6 @@ fn main() {
         .set_compiler(true)
         .set_env(true);
 
-    built::write_built_file_with_opts(&opts, src, dst)
+    built::write_built_file_with_opts(&opts, Path::new(&src), &dst)
         .expect("Failed to acquire build-time information");
 }
