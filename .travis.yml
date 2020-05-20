@@ -12,6 +12,7 @@ matrix:
   - python: 3.5
   - python: 3.6
   - python: 3.7
+  - python: 3.8
 
 env:
   global:
@@ -38,5 +39,5 @@ deploy:
   on:
     branch: master
     repo: PyO3/pyo3-built
-    python: 3.7
+    python: 3.8
     tags: true
