@@ -1,5 +1,4 @@
 pub extern crate pyo3;
-pub extern crate built;
 
 #[macro_export]
 macro_rules! pyo3_built {
@@ -7,7 +6,6 @@ macro_rules! pyo3_built {
 
         use ::pyo3::types::PyDict;
         use ::pyo3::types::PyString;
-        use $crate::built::util::strptime;
 
         let info = PyDict::new($py);
 
@@ -21,12 +19,15 @@ macro_rules! pyo3_built {
         info.set_item("build", build)?;
 
         // info time
-        let ts = strptime($info::BUILT_TIME_UTC).timestamp();
+        let dt = $py
+            .import("email.utils")?
+            .call1("parsedate_to_datetime", ($info::BUILT_TIME_UTC,))?;
+        /*let ts = strptime($info::BUILT_TIME_UTC).timestamp();
         let dt = $py
             .import("datetime")?
             .get("datetime")?
             .to_object($py)
-            .call_method1($py, "fromtimestamp", (ts,))?;
+            .call_method1($py, "fromtimestamp", (ts,))?;*/
         info.set_item("info-time", dt)?;
 
         // info dependencies

@@ -17,4 +17,3 @@ codecov = { repository = "PyO3/pyo3-built", branch = "master", service = "github
 
 [dependencies]
 pyo3 = "0.11.0"
-built = { version = "0.4.0", features = ["chrono"] }
