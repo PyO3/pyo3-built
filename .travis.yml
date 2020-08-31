@@ -16,21 +16,22 @@ matrix:
 
 env:
   global:
-    - TRAVIS_RUST_VERSION=nightly
-    - RUSTFLAGS="-C link-dead-code"
-    - RUST_BACKTRACE=1
-    - SCCACHE_DIR="$HOME/.cargo/sccache"
-    - RUSTC_WRAPPER=sccache
-    - PATH="$HOME/.cargo/bin:$PATH"
+  - TRAVIS_RUST_VERSION=nightly
+  - RUSTFLAGS="-C link-dead-code"
+  - RUST_BACKTRACE=1
+  - SCCACHE_DIR="$HOME/.cargo/sccache"
+  - RUSTC_WRAPPER=sccache
+  - PATH="$HOME/.cargo/bin:$PATH"
+  - secure: pv0GlSSaLRUGLf9rgw5zdg437LPyb55m4VwSmwnh7BHrRAw1J1196rOe9VvimyfqnEsq1znXG8Cu6F607PsgitVGuPyRQkYTpqhzxAcr8IMAou3e4YXszZ/RORcda3Q9dx0wiSJRla9CivpP63iJ+FrX9HzlnryIi0ZFlEDeXjP5rkHT4VvDkAMPVAQqyvyQ3w0TRD5u0bN0QEo5+0S5qcOtxrHTDkJxGDXh7jxrlUeSqALOdxWosvlonkv7VvwcBD6WJkFSEDmpPqaVZAZ8xYrmGa0U/1wImLEA1zWvXQ4vwMdskodK/fSeyzH+jK7wh90p06y826P+Ugld11QsaEOQKh2AvbQ5IJZUQeUGw/EftEHt9c9TkdIoVP1hM5HexExqQxOKJbcm6tFnU5W+MkcZ6rLPDOgdvZBzotouB5p9cS9Snuk7Dllhhaj7p5rncWEBAHo5LhhQ7erhxK4hMOWRToiF5wk3j6bgKiwn9cNToXO7fBuzSV8nBFC4voNF/okLyN2r4rS3rvRG5tYa3R2S1aV0LRArN8lyHMxY5NM/FTUoI8jjVHe0ZP4U/lnH9f7ALpX7bQE6XkctP+9SLE5gCEviehG5zUiRzK1iKP2SBlc6YNKFuHJC+Uyh2jTVcv7lpBLYthuqhwz7mRJPu/aUfn9CozmeeU+MlEiNqRE=
 
 before_install:
-  - ./ci/travis/setup.sh
+- "./ci/travis/setup.sh"
 
 install:
-  - pip install setuptools-rust
+- pip install setuptools-rust
 
 script:
-  - ./ci/travis/test.sh
+- "./ci/travis/test.sh"
 
 deploy:
   provider: script
