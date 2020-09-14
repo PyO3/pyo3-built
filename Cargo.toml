@@ -16,4 +16,4 @@ appveyor = { repository = "PyO3/pyo3-built" }
 codecov = { repository = "PyO3/pyo3-built", branch = "master", service = "github" }
 
 [dependencies]
-pyo3 = "0.11.0"
+pyo3 = "0.12.0"
