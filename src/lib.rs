@@ -1,5 +1,3 @@
-pub extern crate pyo3;
-
 #[macro_export]
 macro_rules! pyo3_built {
     ($py: ident, $info: ident) => {{

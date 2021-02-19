@@ -14,6 +14,3 @@ categories = ["development-tools::ffi", "development-tools::build-utils"]
 travis-ci = { repository = "PyO3/pyo3-built", branch = "master" }
 appveyor = { repository = "PyO3/pyo3-built" }
 codecov = { repository = "PyO3/pyo3-built", branch = "master", service = "github" }
-
-[dependencies]
-pyo3 = "0.12.0"
