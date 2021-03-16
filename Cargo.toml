@@ -11,6 +11,6 @@ license = "Apache-2.0"
 categories = ["development-tools::ffi", "development-tools::build-utils"]
 
 [badges]
-travis-ci = { repository = "PyO3/pyo3-built", branch = "master" }
+travis-ci = { repository = "PyO3/pyo3-built", branch = "main" }
 appveyor = { repository = "PyO3/pyo3-built" }
-codecov = { repository = "PyO3/pyo3-built", branch = "master", service = "github" }
+codecov = { repository = "PyO3/pyo3-built", branch = "main", service = "github" }
