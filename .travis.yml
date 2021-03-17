@@ -38,7 +38,7 @@ deploy:
   skip_cleanup: true
   script: cargo publish --token $CRATES_IO_TOKEN
   on:
-    branch: master
+    branch: main
     repo: PyO3/pyo3-built
     python: 3.8
     tags: true
