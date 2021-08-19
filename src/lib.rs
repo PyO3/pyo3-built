@@ -1,9 +1,8 @@
 #[macro_export]
 macro_rules! pyo3_built {
     ($py: ident, $info: ident) => {{
-
-        use ::pyo3::types::PyDict;
-        use ::pyo3::types::PyString;
+        use pyo3::types::PyDict;
+        use pyo3::types::PyString;
 
         let info = PyDict::new($py);
 
@@ -19,7 +18,8 @@ macro_rules! pyo3_built {
         // info time
         let dt = $py
             .import("email.utils")?
-            .call1("parsedate_to_datetime", ($info::BUILT_TIME_UTC,))?;
+            .getattr("parsedate_to_datetime")?
+            .call1(($info::BUILT_TIME_UTC,))?;
         /*let ts = strptime($info::BUILT_TIME_UTC).timestamp();
         let dt = $py
             .import("datetime")?
@@ -38,7 +38,8 @@ macro_rules! pyo3_built {
         // Features
         let features = $info::FEATURES
             .iter()
-            .map(|feat| PyString::new($py, feat)).collect::<Vec<_>>();
+            .map(|feat| PyString::new($py, feat))
+            .collect::<Vec<_>>();
         info.set_item("features", features)?;
 
         // Host
