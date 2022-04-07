@@ -1,9 +1,5 @@
 #[macro_export]
 macro_rules! pyo3_built {
-    ($py: ident, $info: ident, "intro") => {
-        use pyo3::types::PyDict;
-        use pyo3::types::PyString;
-    };
     ($py: ident, $info: ident, $dict: ident, "build") => {
         // Rustc
         let build = PyDict::new($py);
@@ -72,21 +68,18 @@ macro_rules! pyo3_built {
         $dict.set_item("git", git)?;
 
     };
-    ($py: ident, $info: ident, $dict: ident, "finish") => {
-        $dict
-    };
     // Default build
     ($py: ident, $info: ident) => {
         pyo3_built!{$py, $info, "build", "time", "deps", "features", "host", "target"}
     };
     // Custom build
     ($py: ident, $info: ident, $($i:tt ),+ ) => {{
-        pyo3_built!{$py, $info, "intro"}
+        use pyo3::types::PyDict;
+        use pyo3::types::PyString;
         let info = PyDict::new($py);
         $(
             pyo3_built!{$py,$info, info, $i}
         )+
-
-        pyo3_built!{$py, $info, info, "finish"}
+        info
     }};
 }
