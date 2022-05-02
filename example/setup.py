@@ -12,8 +12,12 @@ setuptools.setup(
         "setuptools",
         "setuptools-rust ~=0.9",
     ],
-    rust_extensions=rust.find_rust_extensions(
-        binding=rust.Binding.PyO3,
-        strip=rust.Strip.Debug,
-    )
+    rust_extensions=[
+        rust.RustExtension(
+            "hello",
+            "hello/Cargo.toml",
+            binding=rust.Binding.PyO3,
+            strip=rust.Strip.Debug,
+        )
+    ]
 )
