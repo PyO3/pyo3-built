@@ -99,3 +99,24 @@ will contain the following metadata:
    }
 }
 ```
+
+### Customization
+
+When invoking the macro, one can control what will be added
+to the build dictionary by postfixing the list of the parameters we want in the dictionary.
+See the following example:
+```rust
+m.add("__build__", pyo3_built!(py, build, "time", "git", "target"))?;
+```
+
+The following parameters are available (they mirror built categories):
+- `"build"`
+- `"time"`
+- `"deps"`
+- `"features"`
+- `"host"`
+- `"target"`
+- `"git"`
+
+The corresponding options must be enabled in the built crate and the build.rs for this to work.
+By default everything except `"git"` is enabled.
