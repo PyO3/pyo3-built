@@ -3,7 +3,7 @@
 *Simple macro to expose metadata obtained with the [`built`](https://crates.io/crates/built)
 crate as a [`PyDict`](https://pyo3.github.io/pyo3/pyo3/struct.PyDict.html)*
 
-[![TravisCI](https://img.shields.io/travis/PyO3/pyo3-built/main.svg?maxAge=600&style=flat-square)](https://travis-ci.org/PyO3/pyo3-built/branches)
+[![Build](https://img.shields.io/github/workflow/status/PyO3/pyo3-built/Test?maxAge=600&style=flat-square)](https://github.com/PyO3/pyo3-built/actions)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat-square&maxAge=2678400)](https://choosealicense.com/licenses/apache-2.0/)
 [![Source](https://img.shields.io/badge/source-GitHub-303030.svg?maxAge=2678400&style=flat-square)](https://github.com/PyO3/pyo3-built)
 [![Crate](https://img.shields.io/crates/v/pyo3-built.svg?maxAge=600&style=flat-square)](https://crates.io/crates/pyo3-built)
