@@ -1,3 +1,5 @@
+#![doc = include_str!("../README.md")]
+
 #[macro_export]
 macro_rules! pyo3_built {
     ($py: ident, $info: ident, $dict: ident, "build") => {

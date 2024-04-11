@@ -21,7 +21,7 @@ pyo3-built = "0.5"
 
 Create your `build.rs` as you normally would with `built`, but activate
 dependencies metadata as well:
-```rust
+```rust,ignore
 //! build.rs
 extern crate built;
 
@@ -32,7 +32,7 @@ fn main() {
 
 Then, include the generated file anywhere in a dedicated module in your Python
 extension, and use the `pyo3_built!` macro to generate the `PyDict`:
-```rust
+```rust,ignore
 //! lib.rs
 #[macro_use]
 extern crate pyo3_built;
@@ -96,11 +96,12 @@ will contain the following metadata:
 When invoking the macro, one can control what will be added
 to the build dictionary by postfixing the list of the parameters we want in the dictionary.
 See the following example:
-```rust
+```rust,ignore
 m.add("__build__", pyo3_built!(py, build, "time", "git", "target"))?;
 ```
 
 The following parameters are available, mirroring built categories:
+
 - `"build"`
 - `"time"` (requires the `chrono` feature of `built`)
 - `"deps"`
