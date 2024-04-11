@@ -14,9 +14,9 @@ crate as a [`PyDict`](https://pyo3.github.io/pyo3/pyo3/struct.PyDict.html)*
 Add the following to your `Cargo.toml` manifest:
 ```toml
 [build-dependencies]
-built = { version = "0.4", features = ["chrono"] }
+built = { version = "0.7", features = ["chrono"] }
 [dependencies]
-pyo3-built = "0.4"
+pyo3-built = "0.5"
 ```
 
 Create your `build.rs` as you normally would with `built`, but activate
@@ -26,16 +26,7 @@ dependencies metadata as well:
 extern crate built;
 
 fn main() {
-    let src = std::env::var("CARGO_MANIFEST_DIR").unwrap();
-    let dst = std::path::Path::new(&std::env::var("OUT_DIR").unwrap()).join("built.rs");
-    let mut opts = built::Options::default();
-
-    opts.set_dependencies(true)
-        .set_compiler(true)
-        .set_env(true);
-
-    built::write_built_file_with_opts(&opts, std::path::Path::new(&src), &dst)
-        .expect("Failed to acquire build-time information");
+    built::write_built_file().expect("Failed to acquire build-time information");
 }
 ```
 
@@ -109,14 +100,13 @@ See the following example:
 m.add("__build__", pyo3_built!(py, build, "time", "git", "target"))?;
 ```
 
-The following parameters are available (they mirror built categories):
+The following parameters are available, mirroring built categories:
 - `"build"`
-- `"time"`
+- `"time"` (requires the `chrono` feature of `built`)
 - `"deps"`
-- `"features"`
+- `"features"` (requires the `cargo-lock` feature of `built`)
 - `"host"`
 - `"target"`
-- `"git"`
+- `"git"` (requires the `git2` feature of `built`)
 
-The corresponding options must be enabled in the built crate and the build.rs for this to work.
 By default everything except `"git"` is enabled.

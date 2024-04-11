@@ -11,16 +11,9 @@ macro_rules! pyo3_built {
         $dict.set_item("build", build)?;
     };
     ($py: ident, $info: ident, $dict: ident, "time") => {
-        // info time
         let dt = $py
             .import_bound("email.utils")?
             .call_method1("parsedate_to_datetime", ($info::BUILT_TIME_UTC,))?;
-        /*let ts = strptime($info::BUILT_TIME_UTC).timestamp();
-        let dt = $py
-            .import("datetime")?
-            .get("datetime")?
-            .to_object($py)
-            .call_method1($py, "fromtimestamp", (ts,))?;*/
         $dict.set_item("info-time", dt)?;
     };
     ($py: ident, $info: ident, $dict: ident, "deps") => {
