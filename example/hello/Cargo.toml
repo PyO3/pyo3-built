@@ -10,7 +10,7 @@ pyo3 = "0.21.1"
 pyo3-built = { path = "../.." }
 
 [build-dependencies]
-built = { version = "0.7.2", features = ["chrono"] }
+built = { version = "0.7.2", features = ["chrono", "cargo-lock"] }
 
 [lib]
 crate-type = ["cdylib"]
