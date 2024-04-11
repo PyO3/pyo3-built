@@ -12,10 +12,10 @@ mod build {
 /// Module documentation string
 #[pymodule]
 #[pyo3(name = "hello")]
-fn init(py: Python, m: &PyModule) -> PyResult<()> {
+fn init(py: Python, m: Bound<'_, PyModule>) -> PyResult<()> {
 
     #[pyfn(m)]
-    fn hello(_py: Python) -> PyResult<()> {
+    pub fn hello<'py>(py: Python<'py>) -> PyResult<()> {
         println!("Hello, world!");
         Ok(())
     }

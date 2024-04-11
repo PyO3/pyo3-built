@@ -6,11 +6,11 @@ build = "build.rs"
 publish = false
 
 [dependencies]
-pyo3 = "0.16.0"
+pyo3 = "0.21.1"
 pyo3-built = { path = "../.." }
 
 [build-dependencies]
-built = { version = "0.4.0", features = ["chrono"] }
+built = { version = "0.7.2", features = ["chrono"] }
 
 [lib]
 crate-type = ["cdylib"]

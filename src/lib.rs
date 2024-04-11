@@ -2,7 +2,7 @@
 macro_rules! pyo3_built {
     ($py: ident, $info: ident, $dict: ident, "build") => {
         // Rustc
-        let build = PyDict::new($py);
+        let build = PyDict::new_bound($py);
         build.set_item("rustc", $info::RUSTC)?;
         build.set_item("rustc-version", $info::RUSTC_VERSION)?;
         build.set_item("opt-level", $info::OPT_LEVEL)?;
@@ -13,9 +13,8 @@ macro_rules! pyo3_built {
     ($py: ident, $info: ident, $dict: ident, "time") => {
         // info time
         let dt = $py
-            .import("email.utils")?
-            .getattr("parsedate_to_datetime")?
-            .call1(($info::BUILT_TIME_UTC,))?;
+            .import_bound("email.utils")?
+            .call_method1("parsedate_to_datetime", ($info::BUILT_TIME_UTC,))?;
         /*let ts = strptime($info::BUILT_TIME_UTC).timestamp();
         let dt = $py
             .import("datetime")?
@@ -26,7 +25,7 @@ macro_rules! pyo3_built {
     };
     ($py: ident, $info: ident, $dict: ident, "deps") => {
         // info dependencies
-        let deps = PyDict::new($py);
+        let deps = PyDict::new_bound($py);
         for (name, version) in $info::DEPENDENCIES.iter() {
             deps.set_item(name, version)?;
         }
@@ -36,19 +35,19 @@ macro_rules! pyo3_built {
         // Features
         let features = $info::FEATURES
             .iter()
-            .map(|feat| PyString::new($py, feat))
+            .map(|feat| PyString::new_bound($py, feat))
             .collect::<Vec<_>>();
         $dict.set_item("features", features)?;
     };
     ($py: ident, $info: ident, $dict: ident, "host") => {
         // Host
-        let host = PyDict::new($py);
+        let host = PyDict::new_bound($py);
         host.set_item("triple", $info::HOST)?;
         $dict.set_item("host", host)?;
     };
     ($py: ident, $info: ident, $dict: ident, "target") => {
         // Target
-        let target = PyDict::new($py);
+        let target = PyDict::new_bound($py);
         target.set_item("arch", $info::CFG_TARGET_ARCH)?;
         target.set_item("os", $info::CFG_OS)?;
         target.set_item("family", $info::CFG_FAMILY)?;
@@ -60,7 +59,7 @@ macro_rules! pyo3_built {
         $dict.set_item("target", target)?;
     };
     ($py: ident, $info: ident, $dict: ident, "git") => {
-        let git = PyDict::new($py);
+        let git = PyDict::new_bound($py);
         git.set_item("version", $info::GIT_VERSION)?;
         git.set_item("dirty", $info::GIT_DIRTY)?;
         git.set_item("hash", $info::GIT_COMMIT_HASH)?;
@@ -76,7 +75,7 @@ macro_rules! pyo3_built {
     ($py: ident, $info: ident, $($i:tt ),+ ) => {{
         use pyo3::types::PyDict;
         use pyo3::types::PyString;
-        let info = PyDict::new($py);
+        let info = PyDict::new_bound($py);
         $(
             pyo3_built!{$py,$info, info, $i}
         )+
