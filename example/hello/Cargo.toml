@@ -1,6 +1,7 @@
 [package]
-name = 'hello'
+name = "hello"
 version = "0.1.0"
+edition = "2021"
 authors = ["Martin Larralde <martin.larralde@ens-cachan.fr>"]
 build = "build.rs"
 publish = false
