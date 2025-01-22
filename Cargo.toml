@@ -1,6 +1,6 @@
 [package]
 name = "pyo3-built"
-version = "0.5.0"
+version = "0.6.0"
 edition = "2018"
 description = "Expose build variables obtained with built as a PyDict"
 authors = ["PyO3 Project and Contributors"]

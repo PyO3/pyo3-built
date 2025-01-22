@@ -16,7 +16,7 @@ Add the following to your `Cargo.toml` manifest:
 [build-dependencies]
 built = { version = "0.7", features = ["chrono"] }
 [dependencies]
-pyo3-built = "0.5"
+pyo3-built = "0.6"
 ```
 
 Create your `build.rs` as you normally would with `built`, but activate
